@@ -1,0 +1,12 @@
+{
+  "name": "adamthewise/328/mise_en_place",
+  "authors": [
+    {
+      "name": "Adam Wise",
+      "email": "wise.adam@student.greenriver.edu"
+    }
+  ],
+  "require": {
+    "bcosca/fatfree-core": "dev-master"
+  }
+}
