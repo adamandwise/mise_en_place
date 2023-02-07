@@ -31,22 +31,23 @@ $f3->route('GET /home', function(){
 
 //Define a login route
 $f3->route('GET|POST /login', function($f3){
-    var_dump($_POST);
-    if($_SERVER['REQUEST_METHOD'] == ['POST']){
+
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $_SESSION['username'] = $_POST['username'];
         $_SESSION['password'] = $_POST['password'];
 
         //redirect to logged in frontpage(but home for right now)
-        $f3->reroute('views/frontpage');
+        $f3->reroute('frontpage');
     }
 
     //Instantiate a view
     $view = new Template();
     echo $view->render("views/login.html");
+//    var_dump($_POST);
 
 });
 
-$f3->route('GET /frontpage', function(){
+$f3->route('GET|POST /frontpage', function(){
 
     //Instantiate a view
     $view = new Template();
