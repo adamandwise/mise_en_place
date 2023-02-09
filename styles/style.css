@@ -1,3 +1,13 @@
 #myButton{
     background-color: #7a4e40;
 }
+
+
+.banner{
+    background-image: url(knifeknife.jpg);
+    background-repeat: round;
+
+    position: relative;
+}
+
+

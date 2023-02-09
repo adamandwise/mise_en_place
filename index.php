@@ -21,11 +21,16 @@ $f3->route('GET /', function(){
 });
 
 //Define a home route
-$f3->route('GET /home', function(){
+$f3->route('GET|POST /home', function($f3){
 
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        $f3->reroute('login');
+    }
     //Instantiate a view
     $view = new Template();
     echo $view->render("views/home-page.html");
+
+
 
 });
 
