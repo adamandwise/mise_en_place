@@ -4,9 +4,12 @@
 
 
 .banner{
-    background-image: url(knifeknife.jpg);
-    background-repeat: round;
     position: relative;
+
+    background:/* linear-gradient(
+            rgba(0, 0, 0, 0.6),
+            rgba(0, 0, 0, 0.6)
+    )*/ round,url(knifeknife.jpg);
 }
 
 /*----------Home Tab Style---------------*/
@@ -54,3 +57,11 @@
     /* styles for .selected class, excluding div with .exclude class */
 }
 
+h2,h3{
+    color: black;
+    text-shadow: 0 0 5px white;
+}
+
+a:link,a:visited,a:active{
+    color:#7a4e40;
+}
