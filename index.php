@@ -12,25 +12,13 @@ require_once('vendor/autoload.php');
 $f3 = Base::instance();
 
 //Define a default route
-$f3->route('GET /', function(){
-
-    //Instantiate a view
-    $view = new Template();
-    echo $view->render("views/home-page.html");
-
-});
-
-//Define a home route
-$f3->route('GET|POST /home', function($f3){
-
+$f3->route('GET|POST /', function($f3){
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $f3->reroute('frontpage');
     }
     //Instantiate a view
     $view = new Template();
     echo $view->render("views/home-page.html");
-
-
 
 });
 
