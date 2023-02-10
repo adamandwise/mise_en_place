@@ -24,7 +24,7 @@ $f3->route('GET /', function(){
 $f3->route('GET|POST /home', function($f3){
 
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        $f3->reroute('login');
+        $f3->reroute('frontpage');
     }
     //Instantiate a view
     $view = new Template();
