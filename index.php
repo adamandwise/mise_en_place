@@ -60,5 +60,13 @@ $f3->route('GET|POST /frontpage', function(){
 
 });
 
+$f3->route('GET|POST /newaccount', function(){
+
+    //Instantiate a view
+    $view = new Template();
+    echo $view->render("views/create-account.html");
+
+});
+
 //Run Fat Free
 $f3->run();
