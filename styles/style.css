@@ -42,7 +42,8 @@
 }
 
 .mytabs input[type="radio"]:checked + label {
-    background: #fff;
+    background: #7a4e40;
+    opacity: 60%;
 }
 
 
