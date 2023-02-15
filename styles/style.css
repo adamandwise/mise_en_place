@@ -6,10 +6,10 @@
 .banner{
     position: relative;
 
-    background:/* linear-gradient(
+    background: linear-gradient(
             rgba(0, 0, 0, 0.6),
             rgba(0, 0, 0, 0.6)
-    )*/ round,url(knifeknife.jpg);
+    ) round,url(knifeknife.jpg);
 }
 
 /*----------Home Tab Style---------------*/
