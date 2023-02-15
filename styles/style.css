@@ -44,8 +44,8 @@
 }
 
 .mytabs input[type="radio"]:checked + label {
-    background: #7a4e40;
-    opacity: 60%;
+    background: navajowhite;
+    opacity: 60%;/328
 }
 
 .social{
@@ -63,5 +63,5 @@ h2,h3{
 }
 
 a:link,a:visited,a:active{
-    color:#7a4e40;
+    color:white;
 }
