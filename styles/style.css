@@ -1,3 +1,6 @@
+body{
+    font-family: 'Lora';font-size: 22px;
+}
 #myButton{
     background-color: #7a4e40;
 }
@@ -57,11 +60,24 @@
     /* styles for .selected class, excluding div with .exclude class */
 }
 
-h2,h3{
+h1,h2,h3,h4,h5,h6{
+    font-family: 'Lora';font-size: 22px;
     color: black;
     text-shadow: 0 0 5px white;
 }
 
 a:link,a:visited,a:active{
+    color:white;
+}
+
+#username2{
+    color:white;
+}
+#password2{
+    color:white;
+}
+
+label{
+    font-family: 'Lora';font-size: 22px;
     color:white;
 }
