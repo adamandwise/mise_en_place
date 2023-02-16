@@ -81,3 +81,8 @@ label{
     font-family: 'Lora';font-size: 22px;
     color:white;
 }
+
+
+.dropdown-menu a {
+    color:black;
+}
