@@ -72,5 +72,13 @@ $f3->route('GET|POST /prep', function(){
 
 });
 
+$f3->route('GET|POST /insert', function(){
+
+    //Instantiate a view
+    $view = new Template();
+    echo $view->render("views/insert-recipe.html");
+
+});
+
 //Run Fat Free
 $f3->run();

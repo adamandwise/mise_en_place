@@ -1,0 +1,107 @@
+<include href="views/header.html"></include>
+
+
+  <body>
+  <div class="container-fluid banner">
+    <div class="row banner">
+      <div class="col-3">
+        <a href="/328/mise_en_place" class="navbar-brand"><img class="p-2 img-fluid" src="images/mep_logo_for_nav.png"></a>
+      </div>
+
+      <div class="col-6">
+        <div class="row">
+          <div class="text-center p-2">
+            <label>Insert Recipe</label>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-3">
+
+      </div>
+    </div>
+    <form>
+      <div class="row">
+        <div class="col-2">
+
+        </div>
+        <div class="col-6 mt-2">
+          <label for="station">Choose a Station:</label><br>
+          <select name="station" id="station">
+            <option value="service">Service</option>
+            <option value="prep">Prep</option>
+          </select><br>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-2">
+
+        </div>
+        <div class="col-6 mt-2">
+          <label for="index">Choose an Index:</label><br>
+          <select name="index" id="index">
+            <option value="dessert">Dessert</option>
+            <option value="entree">Entree</option>
+            <option value="appetizer">Appetizer</option>
+            <option value="pantry">Pantry</option>
+            <option value="protein">Protein</option>
+            <option value="sauce">Sauce</option>
+            <option value="seasoning">Seasoning</option>
+            <option value="soup">Soup</option>
+          </select><br>
+        </div>
+      </div>
+
+
+
+<!--      Dynamically create more rows as data is inputted-->
+      <div class="row">
+        <div class="col-2">
+
+        </div>
+
+        <div class="col-3 mt-2">
+            <label for="ingredient">Ingredient: </label><br>
+            <input type="text" id="ingredient" name="ingredient">
+        </div>
+
+        <div class="col-3 mt-2">
+          <label for="amount">Amount: </label><br>
+          <input type="text" id="amount" name="amount">
+        </div>
+
+        <div class="col-3 mt-2">
+          <label for="unit">Unit: </label><br>
+          <input type="text" id="unit" name="unit">
+        </div>
+
+
+
+
+
+
+      </div>
+
+<!--      Dynamically create more as data is inputted-->
+      <div class="row mt-2 pb-2">
+        <div class="col-2">
+
+        </div>
+        <div class="col-8">
+          <label for="instruction">Cooking Instruction:</label><br>
+          <input class="w-100" type="text" id="instruction" name="instruction">
+        </div>
+
+
+
+      </div>
+
+
+
+    </form>
+  </div>
+  </body>
+</html>
