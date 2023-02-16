@@ -1,26 +1,56 @@
 <include href="views/header.html"></include>
+<body>
+<div class="container-fluid">
+  <div class="row banner">
+    <div class="col-3 banner">
+      <a href="/328/mise_en_place" class="navbar-brand"><img class="p-2 img-fluid" src="images/mep_logo_for_nav.png"></a>
+    </div>
 
-
-  <body>
-  <div class="container-fluid banner">
-    <div class="row banner">
-      <div class="col-3">
-        <a href="/328/mise_en_place" class="navbar-brand"><img class="p-2 img-fluid" src="images/mep_logo_for_nav.png"></a>
-      </div>
-
-      <div class="col-6">
-        <div class="row">
-          <div class="text-center p-2">
-            <label>Insert Recipe</label>
-          </div>
+    <div class="col-6">
+      <div class="row">
+        <div class="text-center p-2">
+          <label>Dashboard</label>
         </div>
-
       </div>
 
-      <div class="col-3">
-
+      <div class="row">
+        <div class=" text-center p-4">
+          <!--                    <form>-->
+          <!--                        <input class="form-control" type="text"><button type="submit" class="btn btn-success btn-block" id="search">Search</button>-->
+          <div class="form-outline">
+            <input type="search" id="form1" class="form-control" placeholder="Search Recipe" aria-label="Search" />
+          </div>
+          <!--                    </form>-->
+        </div>
       </div>
     </div>
+
+    <div class="col-3">
+      <div class="dropdown ms-auto">
+        <button class="btn btn-secondary dropdown-toggle" type="button"
+                id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          My Account
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="insert">Create Recipe</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/328/mise_en_place">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row recipe">
+      <div class="row">
+        <div class="text-center p-2">
+          <label>Insert Recipe</label>
+        </div>
+      </div>
+
+      <div class="col-3">
+
+      </div>
+
     <form>
       <div class="row">
         <div class="col-2">
@@ -97,6 +127,7 @@
 
 
     </form>
+  </div>
   </div>
   </body>
 </html>
