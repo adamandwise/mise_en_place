@@ -56,5 +56,21 @@ $f3->route('GET|POST /newaccount', function(){
 
 });
 
+$f3->route('GET|POST /service', function(){
+
+    //Instantiate a view
+    $view = new Template();
+    echo $view->render("views/service.html");
+
+});
+
+$f3->route('GET|POST /prep', function(){
+
+    //Instantiate a view
+    $view = new Template();
+    echo $view->render("views/prep.html");
+
+});
+
 //Run Fat Free
 $f3->run();
