@@ -88,7 +88,7 @@
 
 
 <!--      Dynamically create more rows as data is inputted-->
-      <div class="row">
+      <div class="row" id="ingredientRow">
         <div class="col-2">
 
         </div>
@@ -105,7 +105,7 @@
 
         <div class="col-3 mt-2">
           <label for="unit">Unit: </label><br>
-          <input type="text" id="unit" name="unit">
+          <input type="text" id="unit" name="unit" oninput="addIngredientInput()">
         </div>
 
       </div>
@@ -118,7 +118,7 @@
         <div class="col-8">
           <label for="instruction">Cooking Instruction:</label><br>
           <span>1. </span>
-          <input class="w-100" type="text" id="instruction" name="instruction" oninput="addInput()">
+          <input class="w-100" type="text" id="instruction" name="instruction[]" oninput="addInput()">
 
         </div>
 
