@@ -40,6 +40,7 @@ $f3->route('GET|POST /login', function($f3){
 
 });
 
+//Initial Dashboard Route after login
 $f3->route('GET|POST /frontpage', function(){
 
     //Instantiate a view
@@ -48,6 +49,7 @@ $f3->route('GET|POST /frontpage', function(){
 
 });
 
+//Route to create a new account
 $f3->route('GET|POST /newaccount', function(){
 
     //Instantiate a view
@@ -56,6 +58,7 @@ $f3->route('GET|POST /newaccount', function(){
 
 });
 
+//Route to service page
 $f3->route('GET|POST /service', function(){
 
     //Instantiate a view
@@ -64,6 +67,7 @@ $f3->route('GET|POST /service', function(){
 
 });
 
+//Route to prep page
 $f3->route('GET|POST /prep', function(){
 
     //Instantiate a view
@@ -72,6 +76,7 @@ $f3->route('GET|POST /prep', function(){
 
 });
 
+//Route to add recipe page
 $f3->route('GET|POST /insert', function(){
 
     //Instantiate a view
