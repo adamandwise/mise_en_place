@@ -32,63 +32,42 @@ $f3->route('GET|POST /', function($f3){
 //Define a login route
 $f3->route('GET|POST /login', function($f3){
 
-    if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        $_SESSION['username'] = $_POST['username'];
-        $_SESSION['password'] = $_POST['password'];
-
-        //redirect to logged in frontpage(but home for right now)
-        $f3->reroute('frontpage');
-    }
-
-    //Instantiate a view
-    $view = new Template();
-    echo $view->render("views/login.html");
-//    var_dump($_POST);
+    $GLOBALS['con']->login($f3);
 
 });
 
 //Initial Dashboard Route after login
-$f3->route('GET|POST /frontpage', function(){
+$f3->route('GET|POST /frontpage', function($f3){
 
-    //Instantiate a view
-    $view = new Template();
-    echo $view->render("views/front-page.html");
+    $GLOBALS['con']->frontpage($f3);
 
 });
 
 //Route to create a new account
-$f3->route('GET|POST /newaccount', function(){
+$f3->route('GET|POST /newaccount', function($f3){
 
-    //Instantiate a view
-    $view = new Template();
-    echo $view->render("views/create-account.html");
+    $GLOBALS['con']->newAccount($f3);
 
 });
 
 //Route to service page
-$f3->route('GET|POST /service', function(){
+$f3->route('GET|POST /service', function($f3){
 
-    //Instantiate a view
-    $view = new Template();
-    echo $view->render("views/service.html");
 
+    $GLOBALS['con']->service($f3);
 });
 
 //Route to prep page
-$f3->route('GET|POST /prep', function(){
+$f3->route('GET|POST /prep', function($f3){
 
-    //Instantiate a view
-    $view = new Template();
-    echo $view->render("views/prep.html");
+    $GLOBALS['con']->prep($f3);
 
 });
 
 //Route to add recipe page
-$f3->route('GET|POST /insert', function(){
+$f3->route('GET|POST /insert', function($f3){
 
-    //Instantiate a view
-    $view = new Template();
-    echo $view->render("views/insert-recipe.html");
+    $GLOBALS['con']->insert($f3);
 
 });
 
