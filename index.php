@@ -7,19 +7,26 @@ error_reporting(E_ALL);
 
 //Require autoload file
 require_once('vendor/autoload.php');
+require('/home/adamthew/pdo-config.php');
+
+try{
+    //Instantiate a PDO object
+
+    $dbh = new PDO(DB_DRIVER,USERNAME,PASSWORD);
+}catch(PDOException $e){
+    echo $e->getMessage();
+
+}
 
 //Instantiate F3 Base Class
 $f3 = Base::instance();
 
+$con = new Controller($f3);
+
 //Define a default route
 $f3->route('GET|POST /', function($f3){
-    if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        $f3->reroute('frontpage');
-    }
-    //Instantiate a view
-    $view = new Template();
-    echo $view->render("views/home-page.html");
 
+    $GLOBALS['con']->home($f3);
 });
 
 //Define a login route
