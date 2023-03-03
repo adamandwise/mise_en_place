@@ -71,6 +71,8 @@ class Controller
     function insert($f3)
     {
         $f3->set('measurementUnits', $GLOBALS['dataLayer']->getUnit());
+        $f3->set('index', $GLOBALS['dataLayer']->getIndex());
+        $f3->set('station', $GLOBALS['dataLayer']->getStation());
         //Instantiate a view
         $view = new Template();
         echo $view->render("views/insert-recipe.html");

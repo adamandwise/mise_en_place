@@ -21,13 +21,13 @@ class DataLayer
         return array ("Cups","Oz","Tbsp","Tsp","Grams","Fl Oz","Each");
     }
 
-//    function getIndex()
-//    {
-//
-//    }
+    function getIndex()
+    {
+        return array ("Desert", "Entree", "Appetizer", "Pantry", "Protein", "Sauce", "Seasoning", "Soup");
+    }
 
-//function getStation()
-//{
-//
-//}
+    function getStation()
+    {
+        return array ("Service", "Prep");
+    }
 }
