@@ -10,7 +10,7 @@ class Recipe
     private $_unit;
     private $_instruction;
 
-    function __construct($name,$station,$index,$ingredient,$amount,$unit,$instruction)
+    function __construct($name = "",$station = "",$index = "",$ingredient="",$amount="",$unit="",$instruction="")
     {
         $this->_name = $name;
         $this->_station = $station;

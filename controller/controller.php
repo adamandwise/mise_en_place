@@ -70,9 +70,36 @@ class Controller
 
     function insert($f3)
     {
+        //Add data for Select menus to the beehive
         $f3->set('measurementUnits', $GLOBALS['dataLayer']->getUnit());
         $f3->set('index', $GLOBALS['dataLayer']->getIndex());
         $f3->set('station', $GLOBALS['dataLayer']->getStation());
+
+        //Check if the form has been submitted
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            //Create the recipe object
+            $newRecipe = new Recipe();
+
+            //Recipe Name
+            $name = $_POST['recipeName'];
+            $newRecipe->setName($name);
+
+            //Recipe Station
+            $station = $_POST['station'];
+            $newRecipe->setStation($station);
+
+            //Recipe Index
+            $index = $_POST['index'];
+            $newRecipe->setIndex($index);
+
+            $_SESSION['newRecipe'] = $newRecipe;
+
+            $id = $GLOBALS['dataLayer']->saveRecipe($newRecipe);
+            echo "Order Id: $id inserted successfully";
+        }
+
+
+
         //Instantiate a view
         $view = new Template();
         echo $view->render("views/insert-recipe.html");
