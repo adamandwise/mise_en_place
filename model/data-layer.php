@@ -20,4 +20,14 @@ class DataLayer
     {
         return array ("Cups","Oz","Tbsp","Tsp","Grams","Fl Oz","Each");
     }
+
+//    function getIndex()
+//    {
+//
+//    }
+
+//function getStation()
+//{
+//
+//}
 }

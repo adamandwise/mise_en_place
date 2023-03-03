@@ -68,8 +68,9 @@ class Controller
         echo $view->render("views/prep.html");
     }
 
-    function insert()
+    function insert($f3)
     {
+        $f3->set('measurementUnits', $GLOBALS['dataLayer']->getUnit());
         //Instantiate a view
         $view = new Template();
         echo $view->render("views/insert-recipe.html");
