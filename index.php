@@ -1,27 +1,23 @@
 <?php
 //This is my controller
-session_start();
+
 //Turn on error reporting
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 //Require autoload file
 require_once('vendor/autoload.php');
-require('/home/adamthew/pdo-config.php');
 
-try{
-    //Instantiate a PDO object
-
-    $dbh = new PDO(DB_DRIVER,USERNAME,PASSWORD);
-}catch(PDOException $e){
-    echo $e->getMessage();
-
-}
+session_start();
 
 //Instantiate F3 Base Class
 $f3 = Base::instance();
 
+//Instantiate a controller object
 $con = new Controller($f3);
+
+//Instantiate a datalayer
+$dataLayer = new DataLayer();
 
 //Define a default route
 $f3->route('GET|POST /', function($f3){
@@ -33,7 +29,6 @@ $f3->route('GET|POST /', function($f3){
 $f3->route('GET|POST /login', function($f3){
 
     $GLOBALS['con']->login($f3);
-
 });
 
 //Initial Dashboard Route after login
