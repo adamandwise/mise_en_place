@@ -92,6 +92,18 @@ class Controller
             $index = $_POST['index'];
             $newRecipe->setIndex($index);
 
+            //Recipe Ingredients
+            $ingredients = $_POST['ingredient'];
+            $newRecipe->setIngredient($ingredients);
+
+            //Set Amount
+            $amount = $_POST['amount'];
+            $newRecipe->setAmount($amount);
+
+            //Set Measurement Unit
+            $unit = $_POST['unit'];
+            $newRecipe->setUnit($unit);
+
             $_SESSION['newRecipe'] = $newRecipe;
 
             $id = $GLOBALS['dataLayer']->saveRecipe($newRecipe);

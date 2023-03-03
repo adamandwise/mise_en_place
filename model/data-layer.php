@@ -33,6 +33,7 @@ class DataLayer
 
     function saveRecipe($recipeObj)
     {
+        //Save to Recipes Table
         //1. Define the Query
         $sql = "INSERT INTO recipes (name, type, station) VALUES (:rname, :indexType , :station)";
         //2. Prepare the Statement
@@ -47,7 +48,34 @@ class DataLayer
         //4. Execute the query
         $statement->execute();
         //5. Process the results
-        $id = $this->_dbh->lastInsertId();
+        $id = $this->_dbh->lastInsertId(); //ID will be used to sync the table
+
+
+        $i=0;
+        foreach ($recipeObj->getIngredient() as $ingredient) {
+            //Save to Ingredients Table
+            //TODO: Check if ingredient already in ingredients table
+            $sql = "INSERT INTO ingredients (name) VALUES (:name)";
+            $statement = $this->_dbh->prepare($sql);
+            $statement->bindParam(':name', $ingredient);
+            $statement->execute();
+            $indId = $this->_dbh->lastInsertId();
+
+            $amount = $recipeObj->getAmount()[$i];
+            $unit = $recipeObj->getUnit()[$i];
+
+            //Save to recipe_ingredients table
+            $sql = "INSERT INTO recipe_ingredients (recipe_id, ingredient_id,amount,measurement) VALUES (:recId, :indId, :amount, :unit)";
+            $statement = $this->_dbh->prepare($sql);
+            $statement->bindParam(':recId', $id);
+            $statement->bindParam(':indId', $indId);
+            $statement->bindParam(':amount', $amount);
+            $statement->bindParam(':unit', $unit);
+            $statement->execute();
+            $i++;
+
+
+        }
         return $id;
     }
 }
