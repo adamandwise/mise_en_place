@@ -104,6 +104,11 @@ class Controller
             $unit = $_POST['unit'];
             $newRecipe->setUnit($unit);
 
+            //Recipe Instructions
+            $instructions = $_POST['instruction'];
+            $newRecipe->setInstruction($instructions);
+
+            //Put new recipe into $_SESSION array
             $_SESSION['newRecipe'] = $newRecipe;
 
             $id = $GLOBALS['dataLayer']->saveRecipe($newRecipe);

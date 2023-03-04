@@ -54,6 +54,7 @@ class DataLayer
         $i=0;
         foreach ($recipeObj->getIngredient() as $ingredient) {
             //Save to Ingredients Table
+            //TODO:Prevent Blank Instruction from Going Into Database
             //TODO: Check if ingredient already in ingredients table
             $sql = "INSERT INTO ingredients (name) VALUES (:name)";
             $statement = $this->_dbh->prepare($sql);
@@ -64,6 +65,7 @@ class DataLayer
             $amount = $recipeObj->getAmount()[$i];
             $unit = $recipeObj->getUnit()[$i];
 
+            //TODO:Prevent Blank Instruction from Going Into Database
             //Save to recipe_ingredients table
             $sql = "INSERT INTO recipe_ingredients (recipe_id, ingredient_id,amount,measurement) VALUES (:recId, :indId, :amount, :unit)";
             $statement = $this->_dbh->prepare($sql);
@@ -73,9 +75,21 @@ class DataLayer
             $statement->bindParam(':unit', $unit);
             $statement->execute();
             $i++;
-
-
         }
+
+        $step = 1;
+        foreach ($recipeObj->getInstruction() as $instruction){
+            //TODO:Prevent Blank Instruction from Going Into Database
+            //Save to instructions table
+            $sql = "INSERT INTO instructions (recipe_id, step_number , instruction) VALUES (:recId, :step_number, :instruction)";
+            $statement = $this->_dbh->prepare($sql);
+            $statement->bindParam(':recId', $id);
+            $statement->bindParam(':step_number', $step);
+            $statement->bindParam(':instruction', $instruction);
+            $statement->execute();
+            $step++;
+        }
+
         return $id;
     }
 }
