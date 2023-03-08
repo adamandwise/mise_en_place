@@ -54,40 +54,49 @@ class DataLayer
 
         $i=0;
         foreach ($recipeObj->getIngredient() as $ingredient) {
-            //Save to Ingredients Table
-            //TODO:Prevent Blank Instruction from Going Into Database
-            //TODO: Check if ingredient already in ingredients table
-            $sql = "INSERT INTO ingredients (name) VALUES (:name)";
-            $statement = $this->_dbh->prepare($sql);
-            $statement->bindParam(':name', $ingredient);
-            $statement->execute();
-            $indId = $this->_dbh->lastInsertId();
-
             $amount = $recipeObj->getAmount()[$i];
             $unit = $recipeObj->getUnit()[$i];
+            if(!empty($unit) && !empty($amount) && !empty($ingredient)){
+                //Save to Ingredients Table
+                //Check if ingredient is in ingredient table
+                $sql = "SELECT * FROM ingredients WHERE name = (:ingredientName)";
+                $statement = $this->_dbh->prepare($sql);
+                $statement->bindParam(':ingredientName', $ingredient);
+                $statement->execute();
+                $row = $statement->fetch(PDO::FETCH_ASSOC);
+                if(empty($row)){
+                    $sql = "INSERT INTO ingredients (name) VALUES (:name)";
+                    $statement = $this->_dbh->prepare($sql);
+                    $statement->bindParam(':name', $ingredient);
+                    $statement->execute();
+                    $indId = $this->_dbh->lastInsertId();
+                } else {
+                    $indId = $row['id'];
+                }
 
-            //TODO:Prevent Blank Instruction from Going Into Database
-            //Save to recipe_ingredients table
-            $sql = "INSERT INTO recipe_ingredients (recipe_id, ingredient_id,amount,measurement) VALUES (:recId, :indId, :amount, :unit)";
-            $statement = $this->_dbh->prepare($sql);
-            $statement->bindParam(':recId', $id);
-            $statement->bindParam(':indId', $indId);
-            $statement->bindParam(':amount', $amount);
-            $statement->bindParam(':unit', $unit);
-            $statement->execute();
+                //Save to recipe_ingredients table
+                $sql = "INSERT INTO recipe_ingredients (recipe_id, ingredient_id,amount,measurement) VALUES (:recId, :indId, :amount, :unit)";
+                $statement = $this->_dbh->prepare($sql);
+                $statement->bindParam(':recId', $id);
+                $statement->bindParam(':indId', $indId);
+                $statement->bindParam(':amount', $amount);
+                $statement->bindParam(':unit', $unit);
+                $statement->execute();
+            }
             $i++;
         }
 
         $step = 1;
         foreach ($recipeObj->getInstruction() as $instruction){
-            //TODO:Prevent Blank Instruction from Going Into Database
-            //Save to instructions table
-            $sql = "INSERT INTO instructions (recipe_id, step_number , instruction) VALUES (:recId, :step_number, :instruction)";
-            $statement = $this->_dbh->prepare($sql);
-            $statement->bindParam(':recId', $id);
-            $statement->bindParam(':step_number', $step);
-            $statement->bindParam(':instruction', $instruction);
-            $statement->execute();
+            if(!empty($instruction)) {
+                //Save to instructions table
+                $sql = "INSERT INTO instructions (recipe_id, step_number , instruction) VALUES (:recId, :step_number, :instruction)";
+                $statement = $this->_dbh->prepare($sql);
+                $statement->bindParam(':recId', $id);
+                $statement->bindParam(':step_number', $step);
+                $statement->bindParam(':instruction', $instruction);
+                $statement->execute();
+            }
             $step++;
         }
 

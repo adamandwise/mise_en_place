@@ -114,6 +114,12 @@ class Controller
             $id = $GLOBALS['dataLayer']->saveRecipe($newRecipe);
             echo "Order Id: $id inserted successfully";
         }
+//        function display_page()
+//        {
+//            //Instantiate a view
+//            $view = new Template();
+//            echo $view->render("views/display_page.html");
+//        }
 
 
 
