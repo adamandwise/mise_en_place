@@ -31,7 +31,7 @@ class Controller
             $_SESSION['password'] = $_POST['password'];
 
             //redirect to logged in frontpage(but home for right now)
-            $f3->reroute('frontpage');
+            $this->_f3->reroute('frontpage');
         }
 
         //Instantiate a view

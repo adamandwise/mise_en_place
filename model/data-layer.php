@@ -1,6 +1,7 @@
 <?php
 //connect to db
 require $_SERVER['DOCUMENT_ROOT'].'/../config.php';
+
 class DataLayer
 {
     // Database Connection Object
