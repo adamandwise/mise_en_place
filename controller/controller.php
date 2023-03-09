@@ -126,6 +126,12 @@ class Controller
         $view = new Template();
         echo $view->render("views/display-list.html");
     }
+    function display_page($f3)
+    {
+        //Instantiate a view
+        $view = new Template();
+        echo $view->render("views/display-page.html");
+    }
 
     function display_recipe($f3)
     {
