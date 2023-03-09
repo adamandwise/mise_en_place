@@ -1,6 +1,7 @@
 <?php
 //connect to db
 require $_SERVER['DOCUMENT_ROOT'].'/../config.php';
+
 class DataLayer
 {
     // Database Connection Object
@@ -56,20 +57,23 @@ class DataLayer
             $amount = $recipeObj->getAmount()[$i];
             $unit = $recipeObj->getUnit()[$i];
             if(!empty($unit) && !empty($amount) && !empty($ingredient)){
-                //Save to Ingredients Table
+
                 //Check if ingredient is in ingredient table
                 $sql = "SELECT * FROM ingredients WHERE name = (:ingredientName)";
                 $statement = $this->_dbh->prepare($sql);
                 $statement->bindParam(':ingredientName', $ingredient);
                 $statement->execute();
                 $row = $statement->fetch(PDO::FETCH_ASSOC);
+                
                 if(empty($row)){
+                    //Save to Ingredients Table if ingredient not already in table
                     $sql = "INSERT INTO ingredients (name) VALUES (:name)";
                     $statement = $this->_dbh->prepare($sql);
                     $statement->bindParam(':name', $ingredient);
                     $statement->execute();
                     $indId = $this->_dbh->lastInsertId();
                 } else {
+                    //Ingredient already in table get the preexisting ingredient id
                     $indId = $row['id'];
                 }
 

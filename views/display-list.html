@@ -1,0 +1,51 @@
+<!--create a recipe page for managers to use-->
+<!--Authors: Thomas Loudon, Adam Wise, Sukanvisa Pearyoo-->
+<!--Last Updated: 2/10/2023-->
+<include href="views/header.html"></include>
+<body>
+<div class="container-fluid">
+    <div class="row banner">
+        <div class="col-3 banner">
+            <a href="frontpage" class="navbar-brand"><img class="p-2 img-fluid" src="images/mep_logo_for_nav.png"></a>
+        </div>
+
+        <div class="col-6">
+            <div class="row">
+                <div class="text-center p-2">
+                    <label>Recipe List</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class=" text-center p-4">
+                    <!--                    <form>-->
+                    <!--                        <input class="form-control" type="text"><button type="submit" class="btn btn-success btn-block" id="search">Search</button>-->
+                    <div class="form-outline">
+                        <input type="search" id="form1" class="form-control" placeholder="Search Recipe" aria-label="Search" />
+                    </div>
+                    <!--                    </form>-->
+                </div>
+            </div>
+        </div>
+
+        <div class="col-3">
+            <div class="dropdown ms-auto">
+                <button class="btn btn-secondary dropdown-toggle" type="button"
+                        id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    My Account
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="insert">Create Recipe</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/328/mise_en_place">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+
+    </div>
+</body>
+
+</html>

@@ -31,7 +31,7 @@ class Controller
             $_SESSION['password'] = $_POST['password'];
 
             //redirect to logged in frontpage(but home for right now)
-            $f3->reroute('frontpage');
+            $this->_f3->reroute('frontpage');
         }
 
         //Instantiate a view
@@ -114,17 +114,23 @@ class Controller
             $id = $GLOBALS['dataLayer']->saveRecipe($newRecipe);
             echo "Order Id: $id inserted successfully";
         }
-//        function display_page()
-//        {
-//            //Instantiate a view
-//            $view = new Template();
-//            echo $view->render("views/display_page.html");
-//        }
-
-
 
         //Instantiate a view
         $view = new Template();
         echo $view->render("views/insert-recipe.html");
+    }
+
+    function display_list($f3)
+    {
+        //Instantiate a view
+        $view = new Template();
+        echo $view->render("views/display-list.html");
+    }
+
+    function display_recipe($f3)
+    {
+        //Instantiate a view
+        $view = new Template();
+        echo $view->render("views/display-recipe.html");
     }
 }

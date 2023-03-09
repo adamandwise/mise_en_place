@@ -65,11 +65,26 @@ $f3->route('GET|POST /insert', function($f3){
     $GLOBALS['con']->insert($f3);
 
 });
+<<<<<<< HEAD
 //Route to add recipe page
 //$f3->route('GET|POST /display-page', function($f3){
 //
 //    $GLOBALS['con']->display_page($f3);
 //
 //});
+=======
+
+$f3->route('GET|POST /display_list', function($f3){
+
+    $GLOBALS['con']->display_list($f3);
+
+});
+
+$f3->route('GET|POST /display_recipe', function($f3){
+
+    $GLOBALS['con']->display_recipe($f3);
+
+});
+>>>>>>> 9e58626c14bbf397e1318b66316a826e087bb68d
 //Run Fat Free
 $f3->run();
