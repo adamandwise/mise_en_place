@@ -65,6 +65,11 @@ $f3->route('GET|POST /insert', function($f3){
     $GLOBALS['con']->insert($f3);
 
 });
-
+//Route to add recipe page
+//$f3->route('GET|POST /display-page', function($f3){
+//
+//    $GLOBALS['con']->display_page($f3);
+//
+//});
 //Run Fat Free
 $f3->run();
