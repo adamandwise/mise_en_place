@@ -83,5 +83,11 @@ $f3->route('GET|POST /display_recipe', function($f3){
     $GLOBALS['con']->display_recipe($f3);
 
 });
+
+$f3->route('GET|POST /success', function($f3){
+
+    $GLOBALS['con']->success($f3);
+
+});
 //Run Fat Free
 $f3->run();

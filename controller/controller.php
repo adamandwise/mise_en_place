@@ -110,7 +110,13 @@ class Controller
 
             //Recipe Name
             $name = $_POST['recipeName'];
-            $newRecipe->setName($name);
+            if(Validate::validRecipeName($name)){
+                $newRecipe->setName($name);
+            }else{
+                $this->_f3->set('errors["recipeName"]',
+                'Recipes cannot contain any numeric symbols in their name.');
+            }
+            //$newRecipe->setName($name);
 
             //Recipe Station
             $station = $_POST['station'];
@@ -139,8 +145,14 @@ class Controller
             //Put new recipe into $_SESSION array
             $_SESSION['newRecipe'] = $newRecipe;
 
-            $id = $GLOBALS['dataLayer']->saveRecipe($newRecipe);
-            echo "Order Id: $id inserted successfully";
+            //$id = $GLOBALS['dataLayer']->saveRecipe($newRecipe);
+            //echo "Order Id: $id inserted successfully";
+
+            if(empty($this->_f3->get('errors'))){
+                $id = $GLOBALS['dataLayer']->saveRecipe($newRecipe);
+                $this->_f3->reroute('success');
+
+            }
         }
 
         //Instantiate a view
@@ -190,5 +202,11 @@ class Controller
         //Instantiate a view
         $view = new Template();
         echo $view->render("views/display-recipe.html");
+    }
+
+    function success($f3)
+    {
+        $view = new Template();
+        echo $view->render("views/success.html");
     }
 }

@@ -17,7 +17,7 @@ class Validate
      */
     static function validRecipeName($recipeName)
     {
-        $pattern = '/^[a-zA-Z]+$/';
+        $pattern = '/^[a-zA-Z\s]+$/';
         return preg_match($pattern, $recipeName);
         //return strlen($fname) > 2;
 

@@ -63,6 +63,11 @@
         <div class="col-6 mt-2">
           <label for="station">Recipe Name:</label><br>
           <input type="text" id="recipeName" name="recipeName">
+
+          <p></p>
+          <check if="{{ isset(@errors['recipeName']) }}">
+            <span class="err">{{ @errors['recipeName'] }}</span>
+          </check>
         </div>
       </div>
 
