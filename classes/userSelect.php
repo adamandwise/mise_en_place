@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Constructor
+ */
 class UserSelect extends Recipe
 {
 
