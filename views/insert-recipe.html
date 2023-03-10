@@ -83,6 +83,10 @@
               <option value="{{ @stat }}">{{ @stat }}</option>
             </repeat>
           </select><br>
+          <p></p>
+          <check if="{{ isset(@errors['station']) }}">
+            <span class="err">{{ @errors['station'] }}</span>
+          </check>
         </div>
       </div>
 
@@ -99,6 +103,10 @@
               <option value="{{ @ind }}">{{ @ind }}</option>
             </repeat>
           </select><br>
+          <p></p>
+          <check if="{{ isset(@errors['index']) }}">
+            <span class="err">{{ @errors['index'] }}</span>
+          </check>
         </div>
       </div>
 
@@ -111,19 +119,32 @@
         <div class="col-3 mt-2">
             <label for="ingredient">Ingredient: </label><br>
             <input type="text" id="ingredient" name="ingredient[]">
+          <p></p>
+          <check if="{{ isset(@errors['ingredient']) }}">
+            <span class="err">{{ @errors['ingredient'] }}</span>
+          </check>
         </div>
 
         <div class="col-3 mt-2">
           <label for="amount">Amount: </label><br>
           <input type="text" id="amount" name="amount[]">
+          <p></p>
+          <check if="{{ isset(@errors['amount']) }}">
+            <span class="err">{{ @errors['amount'] }}</span>
+          </check>
         </div>
 
         <div class="col-3 mt-2">
           <label for="unit">Unit: </label><br>
           <input type="text" id="unit" name="unit[]" oninput="addIngredientInput()">
+          <p></p>
+          <check if="{{ isset(@errors['unit']) }}">
+            <span class="err">{{ @errors['unit'] }}</span>
+          </check>
         </div>
 
       </div>
+      <
 
 <!--      Dynamically create more as data is inputted-->
 
@@ -135,7 +156,10 @@
           <label for="instruction">Cooking Instruction:</label><br>
           <span>1. </span>
           <input class="w-100" type="text" id="instruction" name="instruction[]" oninput="addInput()">
-
+          <p></p>
+          <check if="{{ isset(@errors['instruction']) }}">
+            <span class="err">{{ @errors['instruction'] }}</span>
+          </check>
         </div>
 
       </div>

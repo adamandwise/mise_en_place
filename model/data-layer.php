@@ -32,7 +32,7 @@ class DataLayer
     /**
      * @return string[]
      */
-    function getIndex()
+    static function getIndex()
     {
         return array ("Service", "Prep");
 
@@ -41,7 +41,7 @@ class DataLayer
     /**
      * @return string[]
      */
-    function getStation()
+    static function getStation()
     {
         return array ("Dessert", "Entree", "Appetizer", "Pantry", "Protein", "Sauce", "Seasoning", "Soup");
     }

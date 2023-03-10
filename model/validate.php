@@ -60,11 +60,17 @@ class Validate
      * @param $fname
      * @return false|int
      */
-    static function validIngredientName($ingredientName)
+    static function validIngredientName($ingredientNames)
     {
-        $pattern = '/^[a-zA-Z]+$/';
-        return preg_match($pattern, $ingredientName) & strlen($ingredientName) > 0;
-        //return strlen($fname) > 2;
+        foreach($ingredientNames as $ingredient) {
+            if(!is_string($ingredient)){
+                return false; // return false if any element is not a string
+            }
+            if(strlen($ingredient) <= 2){
+                return false; // return false if the length is less than or equal to 2
+            }
+        }
+        return true; // if all elements pass validation return true
 
     }
 
@@ -74,11 +80,18 @@ class Validate
      * @param $amount
      * @return int
      */
-    static function validAmount($amount)
+    static function validAmount($amounts)
     {
-       // $pattern = '/^[a-zA-Z]+$/';
-        //return preg_match($pattern, $ingredientName);
-        return strlen($amount) > 0 | $amount > 0;
+
+        foreach($amounts as $amount) {
+            if(is_string($amount)){
+                return false; // return false if any element is not a string
+            }
+            if(strlen($amount) <= 0){
+                return false; // return false if the length is less than or equal to 2
+            }
+        }
+        return true; // if all elements pass validation return true
 
     }
 
@@ -88,10 +101,29 @@ class Validate
      * @param $unit
      * @return int
      */
-    static function validUnit($unit)
+    static function validUnit($units)
     {
-        $pattern = '/^[a-zA-Z]+$/';
-        return preg_match($pattern, $unit) & strlen($unit) > 0;
+        foreach($units as $unit) {
+            if(!is_string($unit)){
+                return false; // return false if any element is not a string
+            }
+            if(strlen($unit) <= 2){
+                return false; // return false if the length is less than or equal to 0
+            }
+        }
+        return true; // if all elements pass validation return true
+
+    }
+
+    static function validInstruction($instructionNames)
+    {
+        foreach($instructionNames as $instruction) {
+
+            if(strlen($instruction) <= 10){
+                return false; // return false if the length is less than or equal to 2
+            }
+        }
+        return true; // if all elements pass validation return true
 
     }
 
