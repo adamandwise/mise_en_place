@@ -6,6 +6,10 @@ class DataLayer
 {
     // Database Connection Object
     private $_dbh;
+
+    /**
+     * Constructor
+     */
     function __construct()
     {
         try{
@@ -17,21 +21,34 @@ class DataLayer
         }
     }
 
+    /**
+     * @return string[]
+     */
     function getUnit()
     {
         return array ("Cups","Oz","Tbsp","Tsp","Grams","Fl Oz","Each");
     }
 
+    /**
+     * @return string[]
+     */
     function getIndex()
     {
         return array ("Desert", "Entree", "Appetizer", "Pantry", "Protein", "Sauce", "Seasoning", "Soup");
     }
 
+    /**
+     * @return string[]
+     */
     function getStation()
     {
         return array ("Service", "Prep");
     }
 
+    /**
+     * @param $recipeObj
+     * @return false|string
+     */
     function saveRecipe($recipeObj)
     {
         //Save to Recipes Table

@@ -13,7 +13,9 @@ class Controller
     }
 
 
-
+    /**
+     * @return void
+     */
     function home()
     {
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -24,6 +26,9 @@ class Controller
         echo $view->render("views/home-page.html");
     }
 
+    /**
+     * @return void
+     */
     function login()
     {
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -40,6 +45,9 @@ class Controller
 //    var_dump($_POST);
     }
 
+    /**
+     * @return void
+     */
     function frontpage()
     {
         //        Create the recipe object
@@ -51,6 +59,9 @@ class Controller
         echo $view->render("views/front-page.html");
     }
 
+    /**
+     * @return void
+     */
     function newAccount()
     {
         //Instantiate a view
@@ -58,6 +69,9 @@ class Controller
         echo $view->render("views/create-account.html");
     }
 
+    /**
+     * @return void
+     */
     function service()
     {
         $_SESSION['userSelection']->setIndex('service');
@@ -66,6 +80,9 @@ class Controller
         echo $view->render("views/service.html");
     }
 
+    /**
+     * @return void
+     */
     function prep()
     {
         $_SESSION['userSelection']->setIndex('prep');
@@ -74,6 +91,11 @@ class Controller
         echo $view->render("views/prep.html");
     }
 
+    /**
+     * Inserts in recipes from users
+     * @param $f3
+     * @return void
+     */
     function insert($f3)
     {
         //Add data for Select menus to the beehive
@@ -126,6 +148,10 @@ class Controller
         echo $view->render("views/insert-recipe.html");
     }
 
+    /**
+     * @param $f3
+     * @return void
+     */
     function display_list($f3)
     {
         //Set station in the userSelection object
@@ -137,6 +163,11 @@ class Controller
         $view = new Template();
         echo $view->render("views/display-list.html");
     }
+
+    /**
+     * @param $f3
+     * @return void
+     */
     function display_page($f3)
     {
         //Instantiate a view
@@ -144,6 +175,10 @@ class Controller
         echo $view->render("views/display-page.html");
     }
 
+    /**
+     * @param $f3
+     * @return void
+     */
     function display_recipe($f3)
     {
         //Instantiate a view

@@ -10,7 +10,17 @@ class Recipe
     private $_unit;
     private $_instruction;
 
-    function __construct($name = "",$station = "",$index = "",$ingredient="",$amount="",$unit="",$instruction="")
+
+    /**
+     * @param $name
+     * @param $station
+     * @param $index
+     * @param $ingredient
+     * @param $amount
+     * @param $unit
+     * @param $instruction
+     */
+    function __construct($name = "", $station = "", $index = "", $ingredient="", $amount="", $unit="", $instruction="")
     {
         $this->_name = $name;
         $this->_station = $station;
