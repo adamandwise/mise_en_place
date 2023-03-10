@@ -128,6 +128,11 @@ class Controller
 
     function display_list($f3)
     {
+        //Set station in the userSelection object
+        $station = $f3->get('GET.station');
+        $_SESSION['userSelection']->setStation($station);
+        //        var_dump($station);
+
         //Instantiate a view
         $view = new Template();
         echo $view->render("views/display-list.html");
