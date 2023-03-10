@@ -131,7 +131,13 @@ class Controller
         //Set station in the userSelection object
         $station = $f3->get('GET.station');
         $_SESSION['userSelection']->setStation($station);
-        //        var_dump($station);
+        var_dump($_SESSION['userSelection']);
+
+        //call recipeList function to get recipes
+        $recipeList = $GLOBALS['dataLayer']->recipeList($_SESSION['userSelection']);
+
+        //set recipeList to beehive
+        $this->_f3->set('recipeList', $recipeList);
 
         //Instantiate a view
         $view = new Template();

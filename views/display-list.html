@@ -44,7 +44,9 @@
     </div>
 
     <div class="row">
-
+        <repeat group="{{ @recipeList }}" value="{{ @recipe }}">
+            <a>{{ @recipe['name'] }}</a>
+        </repeat>
     </div>
 </body>
 

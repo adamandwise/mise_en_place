@@ -24,12 +24,13 @@ class DataLayer
 
     function getIndex()
     {
-        return array ("Desert", "Entree", "Appetizer", "Pantry", "Protein", "Sauce", "Seasoning", "Soup");
+        return array ("Service", "Prep");
+
     }
 
     function getStation()
     {
-        return array ("Service", "Prep");
+        return array ("Dessert", "Entree", "Appetizer", "Pantry", "Protein", "Sauce", "Seasoning", "Soup");
     }
 
     function saveRecipe($recipeObj)
@@ -104,5 +105,19 @@ class DataLayer
         }
 
         return $id;
+    }
+
+    function recipeList($userSelectObject)
+    {
+        $station = $userSelectObject->getStation();
+        echo $station;
+
+        //Check if ingredient is in ingredient table
+        $sql = "SELECT * FROM recipes WHERE (station = :station)";
+        $statement = $this->_dbh->prepare($sql);
+        $statement->bindParam(':station', $station);
+        $statement->execute();
+        var_dump($statement->errorInfo());
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 }
