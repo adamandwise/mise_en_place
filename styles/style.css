@@ -1,11 +1,6 @@
 body{
     font-family: 'Lora';font-size: 22px;
 }
-#myButton{
-    background-color: #7a4e40;
-}
-
-
 .banner{
     position: relative;
 
@@ -14,8 +9,37 @@ body{
             rgba(0, 0, 0, 0.6)
     ) round,url(knifeknife.jpg);
 }
+#myButton{
+    background-color: #7a4e40;
+}
 
 /*----------Home Tab Style---------------*/
+
+
+
+
+a:link,a:visited,a:active{
+    color:white;
+}
+.banner:not(.exclude) {
+    /* styles for .selected class, excluding div with .exclude class */
+}
+
+.dropdown-menu a {
+    color:black;
+}
+
+h1,h2,h3,h4,h5,h6{
+    font-family: 'Lora';font-size: 22px;
+    color: black;
+    text-shadow: 0 0 5px white;
+}
+
+label{
+    font-family: 'Lora';font-size: 22px;
+    color:white;
+}
+
 .mytabs {
     display: flex;
     flex-wrap: wrap;
@@ -51,42 +75,22 @@ body{
     opacity: 60%;/328
 }
 
+
+
+#password2{
+    color:white;
+}
+
+
+.recipe label{
+    color:black;
+}
+
 .social{
     width:50px;
     height:50px;
 }
 
-.banner:not(.exclude) {
-    /* styles for .selected class, excluding div with .exclude class */
-}
-
-h1,h2,h3,h4,h5,h6{
-    font-family: 'Lora';font-size: 22px;
-    color: black;
-    text-shadow: 0 0 5px white;
-}
-
-a:link,a:visited,a:active{
-    color:white;
-}
-
 #username2{
     color:white;
-}
-#password2{
-    color:white;
-}
-
-label{
-    font-family: 'Lora';font-size: 22px;
-    color:white;
-}
-
-
-.dropdown-menu a {
-    color:black;
-}
-
-.recipe label{
-    color:black;
 }
