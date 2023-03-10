@@ -42,6 +42,10 @@ class Controller
 
     function frontpage()
     {
+        //        Create the recipe object
+        $userSelection = new UserSelect();
+        $_SESSION['userSelection'] = $userSelection;
+
         //Instantiate a view
         $view = new Template();
         echo $view->render("views/front-page.html");
@@ -56,6 +60,7 @@ class Controller
 
     function service()
     {
+        $_SESSION['userSelection']->setIndex('service');
         //Instantiate a view
         $view = new Template();
         echo $view->render("views/service.html");
@@ -63,6 +68,7 @@ class Controller
 
     function prep()
     {
+        $_SESSION['userSelection']->setIndex('prep');
         //Instantiate a view
         $view = new Template();
         echo $view->render("views/prep.html");
