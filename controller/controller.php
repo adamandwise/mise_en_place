@@ -140,43 +140,43 @@ class Controller
 
             //Recipe Ingredients
             $ingredients = $_POST['ingredient'];
-            if(Validate::validIngredientName($ingredients)){
-                $newRecipe->setIngredient($ingredients);
-            }else{
-                $this->_f3->set('errors["ingredient"]',
-                    'Ingredient names must be at least 2 characters long and not contain any numeric symbols.');
-            }
-            //$newRecipe->setIngredient($ingredients);
+//            if(Validate::validIngredientName($ingredients)){
+//                $newRecipe->setIngredient($ingredients);
+//            }else{
+//                $this->_f3->set('errors["ingredient"]',
+//                    'Ingredient names must be at least 2 characters long.');
+//            }
+            $newRecipe->setIngredient($ingredients);
 
             //Set Amount
             $amount = $_POST['amount'];
-            if(Validate::validAmount($amount)){
-                $newRecipe->setAmount($amount);
-            }else{
-                $this->_f3->set('errors["amount"]',
-                    'Amounts must be in numerical form, and greater than 0.');
-            }
-            //$newRecipe->setAmount($amount);
+//            if(Validate::validAmount($amount)){
+//                $newRecipe->setAmount($amount);
+//            }else{
+//                $this->_f3->set('errors["amount"]',
+//                    'Please enter an amount.');
+//            }
+            $newRecipe->setAmount($amount);
 
             //Set Measurement Unit
-            $unit = $_POST['unit'];
-            if(Validate::validUnit($unit)){
-                $newRecipe->setUnit($unit);
-            }else{
-                $this->_f3->set('errors["unit"]',
-                    'Unit designation must be at least 2 characters long and not contain any numeric symbols.');
-            }
-            //$newRecipe->setUnit($unit);
+            $unit = $_POST['units'];
+//            if(Validate::validUnit($unit)){
+//                $newRecipe->setUnit($unit);
+//            }else{
+//                $this->_f3->set('errors["unit"]',
+//                    'Please enter a unit of measurement.');
+//            }
+            $newRecipe->setUnit($unit);
 
             //Recipe Instructions
             $instructions = $_POST['instruction'];
-            if(Validate::validInstruction($instructions)){
-                $newRecipe->setInstruction($instructions);
-            }else{
-                $this->_f3->set('errors["instruction"]',
-                    'Please leave more detailed instructions.');
-            }
-            //$newRecipe->setInstruction($instructions);
+//            if(Validate::validInstruction($instructions)){
+//                $newRecipe->setInstruction($instructions);
+//            }else{
+//                $this->_f3->set('errors["instruction"]',
+//                    'Please leave more detailed instructions.');
+//            }
+            $newRecipe->setInstruction($instructions);
 
             //Put new recipe into $_SESSION array
             $_SESSION['newRecipe'] = $newRecipe;
@@ -194,6 +194,9 @@ class Controller
         //Instantiate a view
         $view = new Template();
         echo $view->render("views/insert-recipe.html");
+
+
+
     }
 
     /**

@@ -63,9 +63,7 @@ class Validate
     static function validIngredientName($ingredientNames)
     {
         foreach($ingredientNames as $ingredient) {
-            if(!is_string($ingredient)){
-                return false; // return false if any element is not a string
-            }
+
             if(strlen($ingredient) <= 2){
                 return false; // return false if the length is less than or equal to 2
             }
@@ -84,9 +82,7 @@ class Validate
     {
 
         foreach($amounts as $amount) {
-            if(is_string($amount)){
-                return false; // return false if any element is not a string
-            }
+
             if(strlen($amount) <= 0){
                 return false; // return false if the length is less than or equal to 2
             }
@@ -104,11 +100,9 @@ class Validate
     static function validUnit($units)
     {
         foreach($units as $unit) {
-            if(!is_string($unit)){
-                return false; // return false if any element is not a string
-            }
-            if(strlen($unit) <= 2){
-                return false; // return false if the length is less than or equal to 0
+
+            if(strlen($unit) <= 0){
+                return false; // return false if the length is less than or equal to 2
             }
         }
         return true; // if all elements pass validation return true
@@ -119,7 +113,7 @@ class Validate
     {
         foreach($instructionNames as $instruction) {
 
-            if(strlen($instruction) <= 10){
+            if(!is_string($instruction)){
                 return false; // return false if the length is less than or equal to 2
             }
         }
