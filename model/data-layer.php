@@ -137,4 +137,55 @@ class DataLayer
         var_dump($statement->errorInfo());
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
+
+
+    function createUser($newUser){
+
+        //1.define the query
+        $sql = "INSERT INTO users (restaurant_name,username,password,manager,email) VALUES (:restaurant_name,:username,:password,:manager,:email)";
+           //2. Prepare the Statement
+        $statement = $this->_dbh->prepare($sql);
+        //3, bind the parameters
+        $org = $newUser ->getOrg();
+        $username = $newUser ->getUsername();
+        $password = $newUser -> getPassword();
+        $email = $newUser -> getEmail();
+
+
+
+
+        if($newUser instanceof UserManager){
+            $manager = 1;
+        }else{
+            $manager = 0;
+        }
+
+        $statement->bindParam(':restaurant_name',$org);
+        $statement->bindParam(':username',$username);
+        $statement->bindParam(':password',$password);
+        $statement->bindParam(':email',$email);
+        $statement->bindParam(':manager',$manager);
+
+        //4.execute statement
+        $statement->execute();
+
+        //5.process the results
+        var_dump($statement->errorInfo());
+        $id = $this->_dbh->lastInsertId(); //ID will be used to sync the table
+        return $id;
+
+
+
+
+
+
+
+
+
+
+    }
+
+
+
+
 }

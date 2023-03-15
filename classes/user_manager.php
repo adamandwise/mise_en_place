@@ -7,7 +7,7 @@ class UserManager extends User
     /**
      * @param $_isManager
      */
-    public function __construct($_isManager)
+    public function __construct($_isManager="")
     {
         $this->_isManager = $_isManager;
     }

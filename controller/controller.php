@@ -64,7 +64,39 @@ class Controller
      */
     function newAccount()
     {
-        //Instantiate a view
+
+
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            if($_POST['isManager'] == 1){
+                $newUser = new UserManager();
+                $newUser ->setIsManager(1);
+            }else{
+                $newUser = new User();
+            }
+
+            $restaurant_name = $_POST['restaurant'];
+            $newUser->setOrg($restaurant_name);
+
+            $username = $_POST['username'];
+            $newUser->setUsername($username);
+
+            $password = $_POST['password'];
+            $newUser ->setPassword($password);
+
+            $email = $_POST['email'];
+            $newUser -> setEmail($email);
+
+            var_dump($newUser);
+
+            $result = $GLOBALS['dataLayer']->createUser($newUser);
+            var_dump($result);
+            session_destroy();
+
+
+        }
+
+
+            //Instantiate a view
         $view = new Template();
         echo $view->render("views/create-account.html");
     }
