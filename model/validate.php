@@ -121,6 +121,13 @@ class Validate
 
     }
 
+    static function validateUser($username){
+
+        $result = $GLOBALS['dataLayer']->callUser($username);
+        return $result;
+    }
+
+
 
 
 }

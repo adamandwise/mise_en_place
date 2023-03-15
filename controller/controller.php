@@ -87,8 +87,10 @@ class Controller
             $newUser -> setEmail($email);
 
             var_dump($newUser);
+            if(Validate::validateUser($username)){
+                $result = $GLOBALS['dataLayer']->createUser($newUser);
+            }
 
-            $result = $GLOBALS['dataLayer']->createUser($newUser);
             var_dump($result);
             session_destroy();
 

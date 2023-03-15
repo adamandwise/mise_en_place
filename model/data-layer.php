@@ -151,15 +151,11 @@ class DataLayer
         $password = $newUser -> getPassword();
         $email = $newUser -> getEmail();
 
-
-
-
         if($newUser instanceof UserManager){
             $manager = 1;
         }else{
             $manager = 0;
         }
-
         $statement->bindParam(':restaurant_name',$org);
         $statement->bindParam(':username',$username);
         $statement->bindParam(':password',$password);
@@ -173,17 +169,20 @@ class DataLayer
         var_dump($statement->errorInfo());
         $id = $this->_dbh->lastInsertId(); //ID will be used to sync the table
         return $id;
-
-
-
-
-
-
-
-
-
-
     }
+
+   //validation for username
+         function callUser($username){
+            $sql = "SELECT * FROM users WHERE username = :username ";
+            $statement = $this->_dbh->prepare($sql);
+            $statement->bindParam(':username',$username);
+            $userCheck= $statement->fetchAll(PDO::FETCH_ASSOC);
+            var_dump($userCheck);
+            if($userCheck == null){
+                return true;
+            }
+        }
+
 
 
 
