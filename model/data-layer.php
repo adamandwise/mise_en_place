@@ -216,6 +216,18 @@ class DataLayer
         }
     }
 
+    function isManager($username){
+        $sql = "SELECT * FROM users WHERE username = :username ";
+        $statement = $this->_dbh->prepare($sql);
+        $statement->bindParam(':username', $username);
+        $statement->execute();
+        $user = $statement->fetch(PDO::FETCH_ASSOC);
+
+        $isManager = $user['manager'];
+
+        return ($isManager == 1);
+    }
+
 
 
 

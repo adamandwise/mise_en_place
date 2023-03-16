@@ -24,7 +24,11 @@ class Controller
                 $_SESSION['password'] = $_POST['password'];
 
                 if(Validate::validLogin($_SESSION['username'],$_SESSION['password'])){
+                    //this session variable will let us check if the user is able to create recipes or not
+                    $_SESSION['userPrivilege'] = Validate::validManager($_SESSION['username']);
                     $this->_f3->reroute('frontpage');
+
+
                 }else{
                     $this->_f3->set('errors["login"]',
                         'This username and password is invalid. Please try again.');
@@ -68,6 +72,7 @@ class Controller
      */
     function frontpage()
     {
+       // var_dump($_SESSION);
         //        Create the recipe object
         $userSelection = new UserSelect();
         $_SESSION['userSelection'] = $userSelection;

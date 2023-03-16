@@ -134,6 +134,12 @@ class Validate
         return $result;
     }
 
+    static function validManager($username){
+        $result = $GLOBALS['dataLayer']->isManager($username);
+        var_dump($result);
+        return $result;
+    }
+
 
 
 

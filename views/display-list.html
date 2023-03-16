@@ -35,7 +35,10 @@
                     My Account
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="insert">Create Recipe</a>
+                    <check if="{{ @SESSION.userPrivilege }}">
+                        <a class="dropdown-item" href="insert">Create Recipe</a>
+
+                    </check>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="/328/mise_en_place">Logout</a>
                 </div>
