@@ -176,12 +176,45 @@ class DataLayer
             $sql = "SELECT * FROM users WHERE username = :username ";
             $statement = $this->_dbh->prepare($sql);
             $statement->bindParam(':username',$username);
+            $statement->execute(); // Execute the prepared statement
             $userCheck= $statement->fetchAll(PDO::FETCH_ASSOC);
-            var_dump($userCheck);
+            //var_dump($userCheck);
             if($userCheck == null){
                 return true;
+            }else{
+                return false;
             }
         }
+
+    /**
+     * Checks if the input password matches the hashed password stored in the database for the given user.
+     *
+     * @param string $username The username of the user to check the password for.
+     * @param string $password The password to check.
+     * @return bool Returns true if the password matches, or false otherwise.
+     */
+    function checkPassword($username, $password) {
+        $sql = "SELECT password FROM users WHERE username = :username";
+        $statement = $this->_dbh->prepare($sql);
+        $statement->bindParam(':username', $username);
+        $statement->execute();
+        $user = $statement->fetch(PDO::FETCH_ASSOC);
+
+        if (!$user) {
+            // User not found in the database
+            return false;
+        }
+
+        $hashed_password = $user['password'];
+
+        if ($password == $hashed_password) {
+            // Passwords match
+            return true;
+        } else {
+            // Passwords don't match
+            return false;
+        }
+    }
 
 
 

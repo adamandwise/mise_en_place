@@ -18,9 +18,19 @@ class Controller
      */
     function home()
     {
-        if($_SERVER['REQUEST_METHOD'] == 'POST'){
-            $this->_f3->reroute('frontpage');
-        }
+
+            if($_SERVER['REQUEST_METHOD'] == 'POST'){
+                $_SESSION['username'] = $_POST['username'];
+                $_SESSION['password'] = $_POST['password'];
+
+                if(Validate::validLogin($_SESSION['username'],$_SESSION['password'])){
+                    $this->_f3->reroute('frontpage');
+                }else{
+                    $this->_f3->set('errors["login"]',
+                        'This username and password is invalid. Please try again.');
+                }
+
+            }
         //Instantiate a view
         $view = new Template();
         echo $view->render("views/home-page.html");
@@ -35,8 +45,16 @@ class Controller
             $_SESSION['username'] = $_POST['username'];
             $_SESSION['password'] = $_POST['password'];
 
+           if(Validate::validLogin($_SESSION['username'],$_SESSION['password'])){
+               $this->_f3->reroute('frontpage');
+           }else{
+               $this->_f3->set('errors["login"]',
+                   'This username and password is invalid. Please try again.');
+           }
+
+
             //redirect to logged in frontpage(but home for right now)
-            $this->_f3->reroute('frontpage');
+           // $this->_f3->reroute('frontpage');
         }
 
         //Instantiate a view
@@ -86,13 +104,26 @@ class Controller
             $email = $_POST['email'];
             $newUser -> setEmail($email);
 
-            var_dump($newUser);
-            if(Validate::validateUser($username)){
+            //var_dump($newUser);
+            $check = Validate::validateUser($username);
+
+            if($check){
+
                 $result = $GLOBALS['dataLayer']->createUser($newUser);
+                $_SESSION['newUser'] = $newUser;
+                $_POST = array();
+
+            }else{
+
+                $this->_f3->set('errors["username"]',
+                'This username is unavailable. Please choose another.');
             }
 
-            var_dump($result);
-            session_destroy();
+           // var_dump($result);
+
+            if(empty($this->_f3->get('errors'))){
+                $this->_f3->reroute('login');
+            }
 
 
         }

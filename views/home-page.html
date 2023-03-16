@@ -27,6 +27,10 @@
                     <p></p>
                     <label id="password2" for="password">Password: </label>
                     <input type="password" class="form-group" id="password" name="password">
+                    <check if="{{ isset(@errors['login']) }}">
+                       <br> <span class="err2">{{@errors['login'] }} </span><br>
+
+                    </check>
                     <br>
                     <br>
                     <button class="btn btn-primary" id="myButton" type="submit">Login</button>
