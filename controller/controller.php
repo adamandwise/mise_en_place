@@ -278,7 +278,7 @@ class Controller
         //Set station in the userSelection object
         $station = $f3->get('GET.station');
         $_SESSION['userSelection']->setStation($station);
-        var_dump($_SESSION['userSelection']);
+//        var_dump($_SESSION['userSelection']);
 
         //call recipeList function to get recipes
         $recipeList = $GLOBALS['dataLayer']->recipeList($_SESSION['userSelection']);
@@ -297,6 +297,8 @@ class Controller
      */
     function display_page($f3)
     {
+
+
         //Instantiate a view
         $view = new Template();
         echo $view->render("views/display-page.html");
@@ -308,6 +310,26 @@ class Controller
      */
     function display_recipe($f3)
     {
+        $id = $f3->get('GET.recipeId');
+        $_SESSION['userSelection']->setId($id);
+
+        //General recipe information from recipe table
+        $recipeSelected = $GLOBALS['dataLayer']->displayRecipe($_SESSION['userSelection']);
+
+        //Set the Recipe Name
+        $_SESSION['userSelection']->setName($recipeSelected['name']);
+
+        //Set the Recipe Station
+        $_SESSION['userSelection']->setStation($recipeSelected['station']);
+
+        //Set the Recipe Index
+        $_SESSION['userSelection']->setIndex($recipeSelected['type']);
+
+        //Set ingredients list to the beehive
+        $ingredientList = $GLOBALS['dataLayer']->displayIngredients($_SESSION['userSelection']);
+        $this->_f3->set('ingredientsList', $ingredientList);
+//        var_dump($ingredientList);
+
         //Instantiate a view
         $view = new Template();
         echo $view->render("views/display-recipe.html");

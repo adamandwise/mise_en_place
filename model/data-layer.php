@@ -228,6 +228,34 @@ class DataLayer
         return ($isManager == 1);
     }
 
+    function displayRecipe($userSelection)
+    {
+
+        //Handles Name,Station,Index
+        $id = $userSelection->getId();
+        $sql = "SELECT * FROM recipes WHERE id = :id ";
+        $statement = $this->_dbh->prepare($sql);
+        $statement->bindParam(':id', $id);
+        $statement->execute();
+        $recipe = $statement->fetch(PDO::FETCH_ASSOC);
+        return $recipe;
+
+    }
+
+    function displayIngredients($userSelection)
+    {
+        //Handles Ingredients, Amount, Unit
+        $id = $userSelection->getId();
+//        var_dump($id);
+        $sql = "SELECT ingredients.name, recipe_ingredients.amount, recipe_ingredients.measurement  FROM ingredients JOIN recipe_ingredients ON ingredients.id = recipe_ingredients.ingredient_id WHERE recipe_ingredients.recipe_id = :id ";
+        $statement = $this->_dbh->prepare($sql);
+        $statement->bindParam(':id', $id);
+        $statement->execute();
+        $ingredients = $statement->fetchALL(PDO::FETCH_ASSOC);
+//        var_dump($statement->errorInfo());
+        return $ingredients;
+    }
+
 
 
 
