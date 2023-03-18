@@ -55,7 +55,9 @@
                 <repeat group="{{ @recipeList }}" value="{{ @recipe }}">
                     <tr id="displayListButton">
                         <td>
-                            <button class="btn btn-primary" id="displayButton" onclick="window.location='{{ @BASE }}/display_recipe?recipeId={{ @recipe['id']}}'">{{ @recipe['name'] }}</button>
+                            <button class="btn btn-primary" id="displayButton"
+                                    onclick="window.location='{{ @BASE }}/display_recipe?recipeId={{ @recipe['id']}}'">
+                                {{ @recipe['name'] }}</button>
                         </td>
                     </tr>
                 </repeat>
