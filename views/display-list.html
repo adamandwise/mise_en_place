@@ -2,7 +2,7 @@
 <!--Authors: Thomas Loudon, Adam Wise, Sukanvisa Pearyoo-->
 <!--Last Updated: 2/10/2023-->
 <include href="views/header.html"></include>
-<body>
+<body id="display_list">
 <div class="container-fluid">
     <div class="row banner">
         <div class="col-3 banner">
@@ -50,18 +50,17 @@
         <div class="col-4">
 
         </div>
-        <div class="col-4 text-center" id="display_list">
-            <table class="w-100 text-center bg-dark">
+        <div class="col-4 text-center">
+            <table>
                 <repeat group="{{ @recipeList }}" value="{{ @recipe }}">
-                    <tr>
+                    <tr id="displayListButton">
                         <td>
-                            <a href="{{ @BASE }}/display_recipe?recipeId={{ @recipe['id']}}">{{ @recipe['name'] }}</a>
+                            <button class="btn btn-primary" id="displayButton" onclick="window.location='{{ @BASE }}/display_recipe?recipeId={{ @recipe['id']}}'">{{ @recipe['name'] }}</button>
                         </td>
                     </tr>
                 </repeat>
             </table>
         </div>
-
 
     </div>
 </body>

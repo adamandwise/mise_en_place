@@ -104,3 +104,29 @@ td a {
     color:white;
 }
 
+/*#display_list  {*/
+/*    background-color: #bec0c4;*/
+/*}*/
+
+#displayListButton{
+
+}
+
+#displayButton{
+background-color: #828283;
+    opacity: 0.6;
+    transition: 0.3s;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+    width: 250px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+#displayButton:hover{
+    opacity: 1;
+}
+
+
+
