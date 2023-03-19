@@ -21,12 +21,13 @@
 
             <div class="row">
                 <div class=" text-center p-4">
-<!--                    <form>-->
-<!--                        <input class="form-control" type="text"><button type="submit" class="btn btn-success btn-block" id="search">Search</button>-->
-                    <div class="form-outline">
-                        <input type="search" id="form1" class="form-control" placeholder="Search Recipe" aria-label="Search" />
-                    </div>
-<!--                    </form>-->
+                    <form action ="/328/mise_en_place/display_list" method="POST">
+                        <!--                        <input class="form-control" type="text"><button type="submit" class="btn btn-success btn-block" id="search">Search</button>-->
+                        <div class="form-outline">
+                            <input type="search" id="form1" class="form-control" name="search" placeholder="Search Recipe" aria-label="Search" />
+                        </div>
+                        <button type="submit" class="btn btn-success btn-block" name="submit">Search</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -54,11 +55,11 @@
     <div class="row ">
         <div class="col-2"></div>
 
-        <div class="col-sm-12 col-lg-4 text-center shadow p-3 mb-5 bg-white rounded" id="front-spacing1">
+        <div class="col-sm-12 col-lg-4 text-center border border-dark rounded-3 m-2">
             <a href="prep" ><img class="p-2 img-fluid w-auto h-auto" src="images/prep2.png" alt="mise en place prep logo"></a>
         </div>
 
-        <div class="col-sm-12 col-lg-4 text-center shadow p-3 mb-5 bg-white rounded" id="front-spacing2" >
+        <div class="col-sm-12 col-lg-4  text-center border border-dark rounded-3 m-2">
             <a href="service" ><img class="p-2 img-fluid w-auto h-auto" src="images/service2.png" alt="mise en place service logo"></a>
         </div>
 

@@ -2,7 +2,7 @@
 <!--Authors: Thomas Loudon, Adam Wise, Sukanvisa Pearyoo-->
 <!--Last Updated: 2/10/2023-->
 <include href="views/header.html"></include>
-<body id="display_list">
+<body>
 <div class="container-fluid">
     <div class="row banner">
         <div class="col-3 banner">
@@ -18,12 +18,13 @@
 
             <div class="row">
                 <div class=" text-center p-4">
-                    <!--                    <form>-->
-                    <!--                        <input class="form-control" type="text"><button type="submit" class="btn btn-success btn-block" id="search">Search</button>-->
-                    <div class="form-outline">
-                        <input type="search" id="form1" class="form-control" placeholder="Search Recipe" aria-label="Search" />
-                    </div>
-                    <!--                    </form>-->
+                    <form action ="/328/mise_en_place/display_list" method="POST">
+                        <!--                        <input class="form-control" type="text"><button type="submit" class="btn btn-success btn-block" id="search">Search</button>-->
+                        <div class="form-outline">
+                            <input type="search" id="form1" class="form-control" name="search" placeholder="Search Recipe" aria-label="Search" />
+                        </div>
+                        <button type="submit" class="btn btn-success btn-block" name="submit">Search</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -51,18 +52,17 @@
 
         </div>
         <div class="col-4 text-center">
-            <table>
+            <table class="w-100 text-center bg-dark">
                 <repeat group="{{ @recipeList }}" value="{{ @recipe }}">
-                    <tr id="displayListButton">
+                    <tr>
                         <td>
-                            <button class="btn btn-primary" id="displayButton"
-                                    onclick="window.location='{{ @BASE }}/display_recipe?recipeId={{ @recipe['id']}}'">
-                                {{ @recipe['name'] }}</button>
+                            <a href="{{ @BASE }}/display_recipe?recipeId={{ @recipe['id']}}">{{ @recipe['name'] }}</a>
                         </td>
                     </tr>
                 </repeat>
             </table>
         </div>
+
 
     </div>
 </body>

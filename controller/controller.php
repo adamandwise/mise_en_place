@@ -275,16 +275,25 @@ class Controller
      */
     function display_list($f3)
     {
-        //Set station in the userSelection object
-        $station = $f3->get('GET.station');
-        $_SESSION['userSelection']->setStation($station);
+        if(ISSET($_POST['search'])){
+            $search = $_POST['search'];
+            $recipeList = $GLOBALS['dataLayer']->searchRecipeList($search);
+            //set recipeList to beehive
+            $this->_f3->set('recipeList', $recipeList);
+
+        } else {
+            //Set station in the userSelection object
+            $station = $f3->get('GET.station');
+            $_SESSION['userSelection']->setStation($station);
 //        var_dump($_SESSION['userSelection']);
 
-        //call recipeList function to get recipes
-        $recipeList = $GLOBALS['dataLayer']->recipeList($_SESSION['userSelection']);
+            //call recipeList function to get recipes
+            $recipeList = $GLOBALS['dataLayer']->recipeList($_SESSION['userSelection']);
 
-        //set recipeList to beehive
-        $this->_f3->set('recipeList', $recipeList);
+            //set recipeList to beehive
+            $this->_f3->set('recipeList', $recipeList);
+        }
+
 
         //Instantiate a view
         $view = new Template();

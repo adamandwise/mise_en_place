@@ -18,12 +18,13 @@
 
             <div class="row">
                 <div class=" text-center p-4">
-                    <!--                    <form>-->
-                    <!--                        <input class="form-control" type="text"><button type="submit" class="btn btn-success btn-block" id="search">Search</button>-->
-                    <div class="form-outline">
-                        <input type="search" id="form1" class="form-control" placeholder="Search Recipe" aria-label="Search" />
-                    </div>
-                    <!--                    </form>-->
+                    <form action ="/328/mise_en_place/display_list" method="POST">
+                        <!--                        <input class="form-control" type="text"><button type="submit" class="btn btn-success btn-block" id="search">Search</button>-->
+                        <div class="form-outline">
+                            <input type="search" id="form1" class="form-control" name="search" placeholder="Search Recipe" aria-label="Search" />
+                        </div>
+                        <button type="submit" class="btn btn-success btn-block" name="submit">Search</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -46,15 +47,14 @@
         </div>
     </div>
 
-    <div class="row mt-4" >
+    <div class="row mt-4">
         <div class="col-2"></div>
 
-
-        <div class="col-sm-12 col-lg-4 text-center shadow p-3 mb-5 bg-white rounded" id="prep-spacing1">
+        <div class="col-sm-12 col-lg-4 text-center border border-dark rounded-3 m-2">
             <a href="{{ @BASE }}/display_list?station=Protein" ><img class="p-2 img-fluid w-auto h-auto" src="images/protein.png" alt="mise en place protein icon"></a>
         </div>
 
-        <div class="col-sm-12 col-lg-4 text-center shadow p-3 mb-5 bg-white rounded">
+        <div class="col-sm-12 col-lg-4 text-center border border-dark rounded-3 m-2">
             <a href="{{ @BASE }}/display_list?station=Seasoning" ><img class="p-2 img-fluid w-auto h-auto" src="images/seasoning.png" alt="mise en place seasoning icon"></a>
         </div>
 
@@ -63,11 +63,11 @@
     <div class="row mt-4">
         <div class="col-2"></div>
 
-        <div class="col-sm-12 col-lg-4 text-center shadow p-3 mb-5 bg-white rounded" id="prep-spacing2">
+        <div class="col-sm-12 col-lg-4 text-center border border-dark rounded-3 m-2">
             <a href="{{ @BASE }}/display_list?station=Soup" ><img class="p-2 img-fluid w-auto h-auto" src="images/soup.png" alt="mise en place soup icon"></a>
         </div>
 
-        <div class="col-sm-12 col-lg-4 text-center shadow p-3 mb-5 bg-white rounded">
+        <div class="col-sm-12 col-lg-4 text-center border border-dark rounded-3 m-2">
             <a href="{{ @BASE }}/display_list?station=Sauce" ><img class="p-2 img-fluid w-auto h-auto" src="images/sauce.png" alt="mise en place sauce icon"></a>
         </div>
 

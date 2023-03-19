@@ -138,6 +138,18 @@ class DataLayer
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    function searchRecipeList($search)
+    {
+        $search_query = '%' . $search . '%';
+        //Check if ingredient is in ingredient table
+        $sql = "SELECT * FROM recipes WHERE name LIKE :search_query";
+        $statement = $this->_dbh->prepare($sql);
+        $statement->bindParam(':search_query', $search_query);
+        $statement->execute();
+        var_dump($statement->errorInfo());
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
 
     function createUser($newUser){
 
