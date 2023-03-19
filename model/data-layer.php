@@ -127,14 +127,14 @@ class DataLayer
     function recipeList($userSelectObject)
     {
         $station = $userSelectObject->getStation();
-        echo $station;
+//        echo $station;
 
         //Check if ingredient is in ingredient table
         $sql = "SELECT * FROM recipes WHERE (station = :station)";
         $statement = $this->_dbh->prepare($sql);
         $statement->bindParam(':station', $station);
         $statement->execute();
-        var_dump($statement->errorInfo());
+//        var_dump($statement->errorInfo());
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
@@ -146,7 +146,7 @@ class DataLayer
         $statement = $this->_dbh->prepare($sql);
         $statement->bindParam(':search_query', $search_query);
         $statement->execute();
-        var_dump($statement->errorInfo());
+//        var_dump($statement->errorInfo());
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
@@ -178,7 +178,7 @@ class DataLayer
         $statement->execute();
 
         //5.process the results
-        var_dump($statement->errorInfo());
+//        var_dump($statement->errorInfo());
         $id = $this->_dbh->lastInsertId(); //ID will be used to sync the table
         return $id;
     }
@@ -272,7 +272,7 @@ class DataLayer
     {
         //Handles Ingredients, Amount, Unit
         $id = $userSelection->getId();
-        var_dump($id);
+//        var_dump($id);
         $sql = "SELECT *  FROM instructions WHERE recipe_id = :id ";
         $statement = $this->_dbh->prepare($sql);
         $statement->bindParam(':id', $id);
