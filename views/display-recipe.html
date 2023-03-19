@@ -43,41 +43,60 @@
             </check>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="/328/mise_en_place">Logout</a>
+            </div>
         </div>
-      </div>
-    </div>
+        </div>
   </div>
 
-  <div class="row">
-      <h1>Name: {{@SESSION.userSelection->getName()}}</h1>
-      <h1>Station: {{@SESSION.userSelection->getStation()}}</h1>
-      <h1>Index: {{@SESSION.userSelection->getIndex()}}</h1><br>
 
-      <table class="table table-striped">
-          <th>Ingredient</th>
-          <th>Amount</th>
-          <th>Unit</th>
-          <repeat group="{{ @ingredientsList }}" value="{{ @ingredient }}">
-              <tr>
-                  <td>
-                      <h1>{{ @ingredient['name']}}</h1>
-                  </td>
+        <div class="row">
+            <h1>Name: {{@SESSION.userSelection->getName()}}</h1>
+            <h1>Station: {{@SESSION.userSelection->getStation()}}</h1>
+            <h1>Index: {{@SESSION.userSelection->getIndex()}}</h1><br>
+        </div>
 
-                  <td>
-                      <h1>{{ @ingredient['amount']}}</h1>
-                  </td>
+        <div class="row">
+            <table class="table table-striped">
+                <th>Ingredient</th>
+                <th>Amount</th>
+                <th>Unit</th>
+                <repeat group="{{ @ingredientsList }}" value="{{ @ingredient }}">
+                    <tr>
+                        <td>
+                            <h1>{{ @ingredient['name']}}</h1>
+                        </td>
 
-                  <td>
-                      <h1>{{ @ingredient['measurement']}}</h1>
-                  </td>
+                        <td>
+                            <h1>{{ @ingredient['amount']}}</h1>
+                        </td>
 
-              </tr>
-          </repeat>
-      </table><br>
+                        <td>
+                            <h1>{{ @ingredient['measurement']}}</h1>
+                        </td>
 
+                    </tr>
+                </repeat>
+            </table><br>
+        </div>
 
+        <div class="row">
+            <table class="table table-striped">
+                <th>Step</th>
+                <th>Instruction</th>
+                <repeat group="{{ @instructionsList }}" value="{{ @instruction }}">
+                    <tr>
+                        <td>
+                            <h1>{{ @instruction['step_number']}}</h1>
+                        </td>
 
-  </div>
+                        <td>
+                            <h1>{{ @instruction['instruction']}}</h1>
+                        </td>
+                    </tr>
+                </repeat>
+            </table><br>
+        </div>
+
 </body>
 
 </html>

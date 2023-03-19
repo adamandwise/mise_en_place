@@ -328,6 +328,10 @@ class Controller
         //Set ingredients list to the beehive
         $ingredientList = $GLOBALS['dataLayer']->displayIngredients($_SESSION['userSelection']);
         $this->_f3->set('ingredientsList', $ingredientList);
+
+        //Set instructions list to the beehive
+        $instructionsList = $GLOBALS['dataLayer']->displayInstructions($_SESSION['userSelection']);
+        $this->_f3->set('instructionsList', $instructionsList);
 //        var_dump($ingredientList);
 
         //Instantiate a view

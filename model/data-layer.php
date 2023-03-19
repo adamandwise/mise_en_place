@@ -256,6 +256,20 @@ class DataLayer
         return $ingredients;
     }
 
+    function displayInstructions($userSelection)
+    {
+        //Handles Ingredients, Amount, Unit
+        $id = $userSelection->getId();
+        var_dump($id);
+        $sql = "SELECT *  FROM instructions WHERE recipe_id = :id ";
+        $statement = $this->_dbh->prepare($sql);
+        $statement->bindParam(':id', $id);
+        $statement->execute();
+        $instructions = $statement->fetchALL(PDO::FETCH_ASSOC);
+//        var_dump($statement->errorInfo());
+        return $instructions;
+    }
+
 
 
 
