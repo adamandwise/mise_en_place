@@ -250,6 +250,7 @@ class Controller
 
             //Put new recipe into $_SESSION array
             $_SESSION['newRecipe'] = $newRecipe;
+            var_dump($_SESSION['newRecipe']);
 
             //$id = $GLOBALS['dataLayer']->saveRecipe($newRecipe);
             //echo "Order Id: $id inserted successfully";
@@ -350,6 +351,7 @@ class Controller
 
     function success($f3)
     {
+        var_dump($_SESSION['newRecipe']);
         $view = new Template();
         echo $view->render("views/success.html");
     }
