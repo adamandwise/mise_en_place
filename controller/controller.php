@@ -288,8 +288,10 @@ class Controller
         if(ISSET($_POST['search'])){
             $search = $_POST['search'];
             $recipeList = $GLOBALS['dataLayer']->searchRecipeList($search);
+
             //set recipeList to beehive
             $this->_f3->set('recipeList', $recipeList);
+
 
         } else {
             //Set station in the userSelection object
@@ -300,8 +302,10 @@ class Controller
             //call recipeList function to get recipes
             $recipeList = $GLOBALS['dataLayer']->recipeList($_SESSION['userSelection']);
 
+
             //set recipeList to beehive
             $this->_f3->set('recipeList', $recipeList);
+
         }
 
 
