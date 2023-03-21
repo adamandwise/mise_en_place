@@ -229,7 +229,7 @@ class Controller
             $newRecipe->setAmount($amount);
 
             //Set Measurement Unit
-            $unit = $_POST['units'];
+            $unit = $_POST['unit'];
 //            if(Validate::validUnit($unit)){
 //                $newRecipe->setUnit($unit);
 //            }else{
@@ -248,9 +248,18 @@ class Controller
 //            }
             $newRecipe->setInstruction($instructions);
 
+            if(Validate::validIndexStationMatch($index,$station)){
+                $_SESSION['newRecipe'] = $newRecipe;
+            }else{
+                $this->_f3->set('errors["indexStation"]',
+                    "The index does not match the station.
+                        Prep = [Protein, Sauces, Seasoning, Soup] 
+                        Service = [Entree,Appetizer, Salad, Dessert]");
+            }
+
             //Put new recipe into $_SESSION array
-            $_SESSION['newRecipe'] = $newRecipe;
-            var_dump($_SESSION['newRecipe']);
+           //$_SESSION['newRecipe'] = $newRecipe;
+
 
             //$id = $GLOBALS['dataLayer']->saveRecipe($newRecipe);
             //echo "Order Id: $id inserted successfully";
@@ -351,7 +360,7 @@ class Controller
 
     function success($f3)
     {
-        var_dump($_SESSION['newRecipe']);
+
         $view = new Template();
         echo $view->render("views/success.html");
     }

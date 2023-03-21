@@ -140,6 +140,17 @@ class Validate
         return $result;
     }
 
+    static function validIndexStationMatch($index,$station){
+        if ($index === "Service" && in_array($station, array("Dessert", "Entree", "Appetizer", "Pantry"))) {
+            return true;
+        } else if ($index === "Prep" && in_array($station, array("Protein", "Sauce", "Seasoning", "Soup"))){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+
 
 
 
