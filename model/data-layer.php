@@ -117,6 +117,7 @@ class DataLayer
                 $statement->bindParam(':step_number', $step);
                 $statement->bindParam(':instruction', $instruction);
                 $statement->execute();
+
             }
             $step++;
         }

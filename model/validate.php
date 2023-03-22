@@ -17,7 +17,7 @@ class Validate
      */
     static function validRecipeName($recipeName)
     {
-        $pattern = '/^[a-zA-Z\s]+$/';
+        $pattern = '/^[a-zA-Z\s,]+$/';
         return preg_match($pattern, $recipeName);
         //return strlen($fname) > 2;
 
@@ -138,6 +138,17 @@ class Validate
         $result = $GLOBALS['dataLayer']->isManager($username);
         var_dump($result);
         return $result;
+    }
+
+    static function validIndexStationMatch($index,$station){
+        if ($index === "Service" && in_array($station, array("Dessert", "Entree", "Appetizer", "Pantry"))) {
+            return true;
+        } else if ($index === "Prep" && in_array($station, array("Protein", "Sauce", "Seasoning", "Soup"))){
+            return true;
+        }else{
+            return false;
+        }
+
     }
 
 
