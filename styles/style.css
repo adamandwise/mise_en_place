@@ -143,7 +143,13 @@ background-color: #828283;
     margin: 25px 25px;
 
 }
-
+.small-button {
+    width: 100px;
+    height: 30px;
+    font-size: 14px;
+    margin: auto;
+    display: block;
+}
 /*table{*/
 /*    color: #3a6572;*/
 /*}*/
